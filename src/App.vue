@@ -1,28 +1,30 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <Skills msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <Nav />
+    <Menu />
+    <v-content>
+      <v-container>
+  <Skills/>
+      </v-container>
+    
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import Skills from './components/Skills.vue'
+import Menu from './components/Menu'
+import Skills from './components/Skills'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
+    Menu,
     Skills
+  },
+  data () {
+    return {
+      //
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
