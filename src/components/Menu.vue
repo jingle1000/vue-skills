@@ -23,10 +23,9 @@
 <script>
     export default {
         data: () => ({
-            drawer: null,
+            drawer: false,
             drawerRight: null,
-            right: false,
-            left: false
+            left: true
         }),
         props: {
             source: String
