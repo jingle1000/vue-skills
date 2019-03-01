@@ -1,35 +1,47 @@
 <template>
   <div class="hello">
-    <h1 class="display">Search for a Book</h1>
-    <form action="#">
-      <v-text-field name="name" label="label" id="id"></v-text-field>
-  </form>
-  <ul>
-    <li v-for="(item, index) in skills" :key="index">{{ item.skill }}</li>
-  </ul>
+    <v-card-text>
+      <h1 class="text-xs-center">Add a Skill</h1>
+    </v-card-text>
+    <v-card class="pa-4 mb-3 elevation-6">
+      <v-layout column wrap justify-center class="ma-1">
+      <v-flex md12>
+        <form action="#">
+          <v-text-field name="name" id="id" placeholder="Book Title..." v-model="skill"></v-text-field>
+        </form>
+      </v-flex>
+      <v-flex md12>
+        <v-btn block class="mt-3 mb-1" color="info" @click="addSkill()">Add Skill</v-btn>
+      </v-flex>
+    </v-layout>
+    </v-card>
+    <Skill class="pa-3 ma-4 elevation-6" v-for="(skill, index) in skillArray" :key="index">
+      <p>{{ skill }}</p>
+    </Skill>
   </div>
 </template>
 
 <script>
+import Skill from './Skill'
+
   export default {
     name: 'Skills',
-    data() {
-      return {
-        skills: [{
-            "skill": "Vue.js"
-          },
-          {
-            "skill": "Python"
-          },
-          {
-            "skill": "Computer Science"
-          }
-        ]
-      }
+    components: {
+      Skill
     },
     props: {
-      msg: String
-    }
+      skillArray: Array
+    },
+    data() {
+      return {
+        skill: '',
+      }
+    },
+    methods: {
+      addSkill() {
+        this.$emit("add-skill", this.skill);
+      }
+    },
   }
 </script>
 
